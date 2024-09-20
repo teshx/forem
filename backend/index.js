@@ -1,26 +1,10 @@
 import mysql from "mysql2";
 import express from "express";
 import { VARSE } from "./vars/var_dotenv.js";
-
+import userRoute from "./routers/userRouters.js";
 const app = express();
 
-// Create a connection pool
-const dbconnection = mysql.createPool({
-  host: VARSE.DB_HOST,
-  user: VARSE.DB_USER,
-  database: VARSE.MYSQL_DB,
-  password: VARSE.DB_PASS,
-  connectionLimit: 10,
-});
-
-// Test the database connection
-dbconnection.execute("SELECT 'test'", (err, res) => {
-  if (err) {
-    console.error("Database connection error:", err);
-  } else {
-    console.log("Connected to the database:", res);
-  }
-});
+app.use("/api/users", userRoute);
 
 // Start the Express server
 app.listen(VARSE.PORT, () => {
