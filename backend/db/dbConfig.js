@@ -1,4 +1,6 @@
 // Create a connection pool
+import { VARSE } from "../vars/var_dotenv.js";
+import mysql from "mysql2";
 const dbconnection = mysql.createPool({
   host: VARSE.DB_HOST,
   user: VARSE.DB_USER,
@@ -8,10 +10,11 @@ const dbconnection = mysql.createPool({
 });
 
 // Test the database connection
-dbconnection.execute("SELECT 'test'", (err, res) => {
-  if (err) {
-    console.error("Database connection error:", err);
-  } else {
-    console.log("Connected to the database:", res);
-  }
-});
+// dbconnection.execute("SELECT 'test'", (err, res) => {
+//   if (err) {
+//     console.error("Database connection error:", err);
+//   } else {
+//     console.log("Connected to the database:", res);
+//   }
+// });
+export default dbconnection.promise();
