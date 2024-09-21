@@ -1,5 +1,6 @@
 import dbconnection from "../db/dbConfig.js";
 import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
 export const registor = async (req, res) => {
   const { username, firstname, lastname, email, password } = req.body;
@@ -73,12 +74,18 @@ export const login = async (req, res) => {
       return res.status(404).json({ message: "User credential incorrect!" });
     }
 
-    res.status(200).json({ message: "User successfully logged in!" });
+    const username = user[0].username;
+    const userid = user[0].userid;
+
+    const token = jwt.sign({ username, userid }, "secret", { expiresIn: "1d" });
+    res.status(200).json({ token, message: "User successfully logged in!" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error." });
   }
 };
 export const check = async (req, res) => {
-  res.send("check");
+  const username = req.user.username;
+  const userid = req.user.userid;
+  res.status(200).json({ meaage: "teshx", username, userid });
 };
