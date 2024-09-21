@@ -1,5 +1,6 @@
 import dbconnection from "../db/dbConfig.js";
-
+import bryptjs from "bcryptjs";
+import { StatusCodes } from "http-status-codes";
 export const registor = async (req, res) => {
   const { username, firstname, lastname, email, password } = req.body;
   try {
@@ -18,10 +19,12 @@ export const registor = async (req, res) => {
       return res.status(404).json({ message: "user is already rejstored" });
     }
 
-    if (password.length <= 8) {
+    if (password.length <= 7) {
       return res.status(404).json({ message: "password al least 8 character" });
     }
 
+    const salt = await bryptjs.genSalt(10);
+    const hashedPassword = await bryptjs.hash(password, salt);
     const query = `
     INSERT INTO users (username, firstname, lastname, email, password)
     VALUES (?, ?, ?, ?, ?)`;
@@ -31,7 +34,7 @@ export const registor = async (req, res) => {
       firstname,
       lastname,
       email,
-      password,
+      hashedPassword,
     ]);
 
     res.status(201).json({
@@ -40,7 +43,7 @@ export const registor = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res.status().json({
+    res.status(500).json({
       msg: "something is wrong",
     });
   }
