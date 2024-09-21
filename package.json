@@ -1,7 +1,7 @@
 {
   "name": "forem",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000f\u0000o\u0000r\u0000e\u0000m\u0000\r\u0000 \u0000",
+  "description": "teshx",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon backend/index.js"
@@ -10,6 +10,7 @@
   "type": "module",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
