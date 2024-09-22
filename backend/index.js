@@ -1,12 +1,15 @@
 import express from "express";
 import { VARSE } from "./vars/var_dotenv.js";
 import userRoute from "./routers/userRouters.js";
+import questionRoutes from "./routers/questionRoutes.js";
+import { authMiddleware } from "./middleware/authMiddleware.js";
 import dbconnection from "./db/dbConfig.js";
 const app = express();
 
 // middleware
 app.use(express.json());
 app.use("/api/users", userRoute);
+app.use("/api/question", authMiddleware, questionRoutes);
 
 async function start() {
   try {

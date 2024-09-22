@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { VARSE } from "../vars/var_dotenv.js";
 export const authMiddleware = async (req, res, next) => {
   const authheader = req.headers.authorization;
   if (!authheader || !authheader.startsWith("Bearer"))
@@ -7,7 +8,7 @@ export const authMiddleware = async (req, res, next) => {
       .json({ success: false, message: "unauthorized -no token provided" });
   const token = authheader.split(" ")[1];
   try {
-    const data = jwt.verify(token, "secret");
+    const data = jwt.verify(token, VARSE.JWT_SECRET);
     if (!data)
       return res.status(401).json({
         success: false,

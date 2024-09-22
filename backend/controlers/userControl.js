@@ -2,6 +2,7 @@ import dbconnection from "../db/dbConfig.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
+import { VARSE } from "../vars/var_dotenv.js";
 export const registor = async (req, res) => {
   const { username, firstname, lastname, email, password } = req.body;
   try {
@@ -77,7 +78,9 @@ export const login = async (req, res) => {
     const username = user[0].username;
     const userid = user[0].userid;
 
-    const token = jwt.sign({ username, userid }, "secret", { expiresIn: "1d" });
+    const token = jwt.sign({ username, userid }, VARSE.JWT_SECRET, {
+      expiresIn: "1d",
+    });
     res.status(200).json({ token, message: "User successfully logged in!" });
   } catch (error) {
     console.error(error);
@@ -87,5 +90,5 @@ export const login = async (req, res) => {
 export const check = async (req, res) => {
   const username = req.user.username;
   const userid = req.user.userid;
-  res.status(200).json({ meaage: "teshx", username, userid });
+  res.status(200).json({ message: "this is teshx", username, userid });
 };
