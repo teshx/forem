@@ -5,6 +5,10 @@ const route = express.Router();
 
 route.post("/registor", registor);
 route.post("/login", login);
+
+
+
+
 route.get("/check", authMiddleware, check);
 
 export default route;

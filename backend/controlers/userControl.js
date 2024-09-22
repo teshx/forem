@@ -81,7 +81,9 @@ export const login = async (req, res) => {
     const token = jwt.sign({ username, userid }, VARSE.JWT_SECRET, {
       expiresIn: "1d",
     });
-    res.status(200).json({ token, message: "User successfully logged in!" });
+    return res
+      .status(200)
+      .json({ token, username, message: "User successfully logged in!" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error." });
@@ -90,5 +92,7 @@ export const login = async (req, res) => {
 export const check = async (req, res) => {
   const username = req.user.username;
   const userid = req.user.userid;
-  res.status(200).json({ message: "teshx", username, userid });
+  res
+    .status(200)
+    .json({ message: "user is checked authorized", username, userid });
 };
