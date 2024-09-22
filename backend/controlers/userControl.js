@@ -90,5 +90,5 @@ export const login = async (req, res) => {
 export const check = async (req, res) => {
   const username = req.user.username;
   const userid = req.user.userid;
-  res.status(200).json({ message: "this is teshx", username, userid });
+  res.status(200).json({ message: "teshx", username, userid });
 };
