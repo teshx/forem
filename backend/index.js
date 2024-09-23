@@ -2,6 +2,7 @@ import express from "express";
 import { VARSE } from "./vars/var_dotenv.js";
 import userRoute from "./routers/userRouters.js";
 import questionRoutes from "./routers/questionRoutes.js";
+import answerRoute from "./routers/answerRoute.js";
 import { authMiddleware } from "./middleware/authMiddleware.js";
 import dbconnection from "./db/dbConfig.js";
 import cors from "cors";
@@ -11,7 +12,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/api/users", userRoute);
-app.use("/api/question", authMiddleware, questionRoutes);
+app.use("/api/answer", answerRoute);
+app.use("/api/question", questionRoutes);
 
 async function start() {
   try {

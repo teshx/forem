@@ -39,6 +39,15 @@ export const registor = async (req, res) => {
       hashedPassword,
     ]);
 
+    const quer =
+      "SELECT userid, username, firstname, lastname, email FROM users WHERE username = ?";
+
+    const value = [username];
+
+    const [User] = await dbconnection.query(quer, value);
+
+    console.log(User);
+
     res.status(201).json({
       success: true,
       message: "user is sucessfuly registored",
@@ -92,7 +101,15 @@ export const login = async (req, res) => {
 export const check = async (req, res) => {
   const username = req.user.username;
   const userid = req.user.userid;
+
+  const query =
+    "SELECT userid, username, firstname, lastname, email FROM users WHERE username = ?";
+
+  const values = [username];
+
+  const [Users] = await dbconnection.query(query, values);
+
   res
     .status(200)
-    .json({ message: "user is checked authorized", username, userid });
+    .json({ message: "user is checked authorized", Users, username, userid });
 };

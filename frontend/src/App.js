@@ -5,6 +5,7 @@ import { axiosBase } from "./axiosConfig/axiosConfig.js";
 import Registore from "./pages/Registore.jsx";
 import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Ask from "./pages/Ask.jsx";
 
 export const Appstate = createContext();
 function App() {
@@ -21,8 +22,8 @@ function App() {
           Authorization: "Bearer " + token,
         },
       });
-      setuser(data);
-      console.log(data);
+      setuser(data.Users[0]);
+      console.log(data.Users[0]);
     } catch (error) {
       console.log(error.response.data);
       Navigates("/login");
@@ -35,8 +36,9 @@ function App() {
     <Appstate.Provider value={{ user, setuser }}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="login" element={<Logine />} />
-        <Route path="rejstor" element={<Registore />} />
+        <Route path="/login" element={<Logine />} />
+        <Route path="/rejstor" element={<Registore />} />
+        <Route path="/ask" element={<Ask />} />
       </Routes>
     </Appstate.Provider>
   );

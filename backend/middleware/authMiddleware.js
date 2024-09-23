@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
+import dbconnection from "../db/dbConfig.js";
 import { VARSE } from "../vars/var_dotenv.js";
 export const authMiddleware = async (req, res, next) => {
-  const authHeader = req.headers.authorization; 
+  const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res
       .status(401)
@@ -9,7 +10,6 @@ export const authMiddleware = async (req, res, next) => {
   }
 
   const token = authHeader.split(" ")[1];
- 
 
   try {
     const data = jwt.verify(token, VARSE.JWT_SECRET);
