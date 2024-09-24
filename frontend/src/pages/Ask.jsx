@@ -1,29 +1,43 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Appstate } from "../App";
+
 import { axiosBase } from "../axiosConfig/axiosConfig";
+
+import { useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 function Ask() {
   const navigate = useNavigate();
-  const emailsdom = useRef();
-  const passworddom = useRef();
+  const { user } = useContext(Appstate);
+  const [userid, setuserid] = useState("");
+  const [questionid, setquestionid] = useState("");
+  const [mes, setmessage] = useState();
+  const question = uuidv4();
+  useEffect(() => {
+    setquestionid(question);
+  }, []);
+
+  const Titledom = useRef();
+  const Descriptiondom = useRef();
   const handlesubmit = async (e) => {
-    const email = emailsdom.current.value;
-    const password = passworddom.current.value;
+    const title = Titledom.current.value;
+    const description = Descriptiondom.current.value;
     e.preventDefault();
-    // if (!email || !password) {
-    //   alert("all input required nedded");
-    //   return;
-    // }
+
+    if (userid || !questionid || !title || !description) {
+      alert("all input required nedded");
+      return;
+    }
     try {
-    //   const { data } = await axiosBase.post("/users/login", {
-    //     email: email,
-    //     password: password,
-    //   });
-
-    //   alert("login sucessfull.");
-
-    //   localStorage.setItem("token", data.token);
-      //   console.log(data);
-    //   navigate("/");
+      const { data } = await axiosBase.post("/question/ask", {
+        userid: user?.userid,
+        questionid: questionid,
+        title: title,
+        description: description,
+      });
+      alert("asking sucessfull.");
+      setmessage(data);
     } catch (error) {
       alert("something is wrong");
       console.log(error);
@@ -32,14 +46,18 @@ function Ask() {
 
   return (
     <div>
+      <Link to="/"> go to home</Link>
+      {mes?.message}
       <form onSubmit={handlesubmit}>
         <div>
-          {/* <span>email:-</span> */}
-          <input type="text" ref={emailsdom} placeholder="Enter tittle" />
+          <input type="text" ref={Titledom} placeholder="Enter tittle" />
         </div>
         <div>
-          {/* <span>password :-</span> */}
-          <input type="text" ref={passworddom} placeholder="enterdescription" />
+          <input
+            type="text"
+            ref={Descriptiondom}
+            placeholder="Enterdescription"
+          />
         </div>
         <div>
           <button type="submit">post Question</button>
