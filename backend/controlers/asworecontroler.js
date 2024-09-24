@@ -1,7 +1,5 @@
 import dbconnection from "../db/dbConfig.js";
-import bcryptjs from "bcryptjs";
-
-export const answer = async (req, res) => {
+export const Addanswer = async (req, res) => {
   const { userid, questionid, answer } = req.body;
 
   if (!userid || !questionid || !answer) {
@@ -29,7 +27,7 @@ export const answer = async (req, res) => {
   }
 };
 
-export const specificA = async (req, res) => {
+export const specificAllanswer = async (req, res) => {
   const questionId = "12345678"; // Replace with the actual question ID
   const query = `
     SELECT DISTINCT
@@ -60,3 +58,4 @@ export const specificA = async (req, res) => {
     });
   }
 };
+export const oneanswer = () => {};
