@@ -1,0 +1,54 @@
+.toask {
+  background-color: #1370f9;
+  color: white;
+  border: 1px solid grey;
+  outline: none;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto; /* This will center the container horizontally */
+}
+
+.allquestion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-bottom: 0.5px solid grey;
+  text-decoration: none;
+  color: black;
+}
+.links,
+.toask {
+  text-decoration: none;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  margin-left: 150px;
+}
+.users {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.allquestion:hover .person-icon {
+  background-color: #012354; /* Background color when hovering over the parent */
+  color: white; /* Icon color when hovering over the parent */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Smooth transition */
+}
