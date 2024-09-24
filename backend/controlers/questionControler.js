@@ -30,14 +30,18 @@ export const asking = async (req, res) => {
 };
 
 export const allquestion = async (req, res) => {
-  const query = `SELECT 
+  const query = `
+  SELECT 
     USERS.username, 
     QUESTIONS.title,
     QUESTIONS.questionid 
-FROM 
+  FROM 
     QUESTIONS 
-JOIN 
-    USERS ON QUESTIONS.userid = USERS.userid;`;
+  JOIN 
+    USERS ON QUESTIONS.userid = USERS.userid
+  ORDER BY 
+    QUESTIONS.id DESC;  
+`;
   const [allqu] = await dbconnection.query(query);
 
   res.status(201).json({
@@ -46,3 +50,5 @@ JOIN
     message: "user is sucessfuly registored",
   });
 };
+
+export const OnlyQuestion = () => {};
