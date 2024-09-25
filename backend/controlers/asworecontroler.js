@@ -3,7 +3,7 @@ export const Addanswer = async (req, res) => {
   const { userid, questionid, answer } = req.body;
 
   if (!userid || !questionid || !answer) {
-    res
+    return res
       .status(400)
       .json({ success: false, message: "please input all required field" });
   }
@@ -28,7 +28,13 @@ export const Addanswer = async (req, res) => {
 };
 
 export const specificAllanswer = async (req, res) => {
-  const questionId = "12345678"; // Replace with the actual question ID
+  const { questionid } = req.body;
+  if (!questionid) {
+    return res
+      .status(400)
+      .json({ success: false, message: "please input all required field" });
+  }
+  const questionId = questionid; // Replace with the actual question ID
   const query = `
     SELECT DISTINCT
         USERS.username, 
@@ -42,8 +48,10 @@ export const specificAllanswer = async (req, res) => {
     JOIN 
         QUESTIONS ON ANSWERS.questionid = QUESTIONS.questionid
     WHERE 
-        ANSWERS.questionid = ?;
-  `;
+        ANSWERS.questionid = ?
+    ORDER BY 
+        ANSWERS.answerid ASC; -- Orders from the oldest to the newest
+`;
 
   try {
     const [rows] = await dbconnection.query(query, [questionId]);

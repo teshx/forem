@@ -11,6 +11,8 @@ const app = express();
 // middleware
 app.use(express.json());
 app.use(cors());
+
+//routes
 app.use("/api/users", userRoute);
 app.use("/api/answer", answerRoute);
 app.use("/api/question", questionRoutes);

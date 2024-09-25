@@ -5,7 +5,7 @@ export const asking = async (req, res) => {
   const { userid, questionid, title, description } = req.body;
 
   if (!userid || !questionid || !title || !description) {
-    res
+    return res
       .status(400)
       .json({ success: false, message: "please input all required field" });
   }
@@ -17,13 +17,13 @@ export const asking = async (req, res) => {
     // console.log(hashedPassword);
     await dbconnection.query(query, [userid, questionid, title, description]);
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: "user is sucessfuly registored",
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({
+    return res.status(500).json({
       messaege: "something is wrong",
     });
   }

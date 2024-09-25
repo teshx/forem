@@ -8,8 +8,8 @@ import {
 } from "../controlers/asworecontroler.js";
 const route = express.Router();
 
-route.post("/answer", Addanswer);
-route.get("/all-answer", specificAllanswer);
+route.post("/answerone", Addanswer);
+route.post("/all-answer", specificAllanswer);
 // route.post("/oneanswer", oneanswer);
 
 export default route;
