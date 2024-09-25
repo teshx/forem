@@ -38,7 +38,7 @@ function Home() {
         </div>
         <div className="username">Welcome: {user?.username}</div>
       </div>
-
+      <div className="question">Questions</div>
       <div>
         {/* Render your questions */}
         {questions.length > 0 ? (

@@ -45,25 +45,44 @@ function Ask() {
   };
 
   return (
-    <div>
-      <Link to="/"> go to home</Link>
-      {mes?.message}
-      <form onSubmit={handlesubmit}>
-        <div>
-          <input type="text" ref={Titledom} placeholder="Enter tittle" />
-        </div>
-        <div>
-          <input
-            type="text"
-            ref={Descriptiondom}
-            placeholder="Enterdescription"
-          />
-        </div>
-        <div>
-          <button type="submit">post Question</button>
-        </div>
-      </form>
-    </div>
+    <section className="containers ">
+      <div className="stepsoflist steps">
+        <h3>Steps to Write a good queestion</h3>
+        <ul>
+          <li>Summerize your problem in a one-line title.</li>
+          <li>Describe your problem in moral detail.</li>
+          <li>Describe what you tried and what you expected to happen.</li>
+          <li>Review your question and post it to the site.</li>
+        </ul>
+      </div>
+      <div className="containers-form">
+        <Link to="/"> go to home</Link>
+        {mes?.message}
+        <form onSubmit={handlesubmit}>
+          <div>
+            <input
+              className="input-style"
+              type="text"
+              ref={Titledom}
+              placeholder="Enter tittle"
+            />
+          </div>
+          <div>
+            <input
+              className="input-style input"
+              type="text"
+              ref={Descriptiondom}
+              placeholder="Enterdescription"
+            />
+          </div>
+          <div>
+            <button className="toask" type="submit">
+              post Question
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
   );
 }
 

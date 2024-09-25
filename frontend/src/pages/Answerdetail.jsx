@@ -5,13 +5,8 @@ import { useContext } from "react";
 import { useParams } from "react-router-dom";
 
 function Answerdetail() {
-  const [questionids, setquestion] = useState("");
   const { questionid } = useParams();
-
   const { user } = useContext(Appstate);
-
-  //   const [userid, setuserid] = useState("");
-
   const [mes, setmessage] = useState();
   const Answerdom = useRef();
 
@@ -46,12 +41,6 @@ function Answerdetail() {
     setupdate(answer); //set answer to update answer when input answer
     const userid = user?.userid; // User ID from context
     // const questionid = questionids; // Use questionids from state
-
-    // Log the values before the validation check purpose
-    /* console.log("Answer:", answer);
-    console.log("User ID:", userid);
-    console.log("Question ID:", questionid); */
-
     // Check if all necessary inputs are provided
     if (!userid || !questionid || !answer) {
       alert("All input fields are required.");
@@ -67,10 +56,10 @@ function Answerdetail() {
       });
 
       // Handle success
-      alert("Answer submitted successfully.");
+      //   alert("Answer submitted successfully.");
       setmessage(data); // Update state with response data of messages
       setupdate(answer); //set answer to update answer when input answer
-       Answerdom.current.value = ""; //clear
+      Answerdom.current.value = ""; //clear
     } catch (error) {
       // Log error details for debugging
       console.error("Error submitting answer:", error);
@@ -87,6 +76,7 @@ function Answerdetail() {
 
   return (
     <div>
+      {mes?.message}
       <form onSubmit={handlesubmit}>
         <div>
           <input type="text" ref={Answerdom} placeholder="Enterdescription" />
