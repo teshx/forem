@@ -3,15 +3,15 @@ import { Appstate } from "../App";
 import { axiosBase } from "../axiosConfig/axiosConfig";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
-
+import PersonIcon from "@mui/icons-material/Person";
 function Answerdetail() {
   const { questionid } = useParams();
   const { user } = useContext(Appstate);
   const [mes, setmessage] = useState();
   const Answerdom = useRef();
 
-  const [questions, setQuestions] = useState([]);
-  console.log(questions);
+  const [answers, setQuestions] = useState([]);
+  // console.log(answers[0]);
   const [uppdate, setupdate] = useState("");
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -75,7 +75,39 @@ function Answerdetail() {
   };
 
   return (
-    <div>
+    <div className="container">
+      <div>
+        <h3>questions</h3>
+        <h5>{answers[0]?.title}</h5>
+        <p>{answers[0]?.description}</p>
+      </div>
+      <h2>Answer from the Community</h2>
+
+      <div>
+        {answers?.map((question, i) => (
+          <div key={i} className="allquestion">
+            <div className="profile-container">
+              <div className="profile">
+                <PersonIcon
+                  className="person-icon"
+                  sx={{
+                    padding: 2, // Adjust padding for desired size
+                    borderRadius: "50%", // This makes the border circular
+                    color: "#012354",
+                    width: 40, // Set width and height to make it a perfect circle
+                    height: 40, // Set height equal to width
+                    border: "2px solid #012354", // Change border color to blue
+                  }}
+                />
+
+                {question.username}
+              </div>
+              <>{question.answer}</>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {mes?.message}
       <form onSubmit={handlesubmit}>
         <div>
