@@ -6,6 +6,7 @@ import Registore from "./pages/Registore.jsx";
 import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Ask from "./pages/Ask.jsx";
+import Answerdetail from "./pages/Answerdetail.jsx";
 
 export const Appstate = createContext();
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Logine />} />
         <Route path="/rejstor" element={<Registore />} />
+        <Route path="/answer/:questionid" element={<Answerdetail />} />
         <Route path="/ask" element={<Ask />} />
       </Routes>
     </Appstate.Provider>
