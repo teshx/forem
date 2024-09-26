@@ -4,6 +4,7 @@ import { axiosBase } from "../axiosConfig/axiosConfig";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 function Answerdetail() {
   const { questionid } = useParams();
   const { user } = useContext(Appstate);
@@ -76,33 +77,48 @@ function Answerdetail() {
 
   return (
     <div className="container">
-      <div>
-        <h3>questions</h3>
-        <h5>{answers[0]?.title}</h5>
+      <div className="oneQuestion">
+        <div>
+          <h2>Questions</h2>
+        </div>
+        <div className="titleQ">
+          <ArrowForwardIcon
+            sx={{
+              backgroundColor: "lightblue",
+              borderRadius: "50%",
+              color: "white",
+              padding: "6px",
+              width: "20px",
+              height: "20px",
+            }}
+          />
+
+          {answers[0]?.title}
+        </div>
         <p>{answers[0]?.description}</p>
       </div>
       <h2>Answer from the Community</h2>
 
-      <div>
+      <div className="all-answer">
         {answers?.map((question, i) => (
-          <div key={i} className="allquestion">
-            <div className="profile-container">
-              <div className="profile">
+          <div key={i} className="answer-container-wrape">
+            <div className="answer-container">
+              <div className="persons">
                 <PersonIcon
                   className="person-icon"
                   sx={{
-                    padding: 2, // Adjust padding for desired size
-                    borderRadius: "50%", // This makes the border circular
-                    color: "#012354",
-                    width: 40, // Set width and height to make it a perfect circle
-                    height: 40, // Set height equal to width
-                    border: "2px solid #012354", // Change border color to blue
+                    padding: 1,
+                    borderRadius: "50%",
+                    color: "#B0B0B0",
+                    width: 25,
+                    height: 25,
+                    border: "7px solid #B0B0B0",
                   }}
                 />
 
                 {question.username}
               </div>
-              <>{question.answer}</>
+              <div className="answers">{question.answer}</div>
             </div>
           </div>
         ))}
