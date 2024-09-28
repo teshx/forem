@@ -40,34 +40,85 @@ function Registore() {
   };
 
   return (
-    <form onSubmit={handlesubmit}>
-      <div className="app">
-        <span>Username:-</span>
-        <input ref={usernamedom} type="text" placeholder="username" />
-      </div>
-      <div>
-        <span>Firstname:-</span>
-        <input ref={firstnamedom} type="text" placeholder="Firstname" />
-      </div>
-      <div>
-        <span>Lastname:-</span>
-        <input ref={lastnamedom} type="text" placeholder="Lastname" />
-      </div>
-      <div>
-        <span>email:-</span>
-        <input ref={emailsdom} type="text" placeholder="email" />
-      </div>
-      <div>
-        <span>password :-</span>
-        <input ref={passworddom} type="text" placeholder="password" />
-      </div>
+    <section className="rejstor-wrape">
+      <div className="rejstor-container">
+        <div className="forms21">
+          <h5>join the Networks</h5>
+          <div className="have-acc">
+            <p>Already have the account</p>
+            <Link className="sign" to="/login">
+              signin
+            </Link>
+          </div>
+          <form className="forms-of-container" onSubmit={handlesubmit}>
+            <div>
+              <input
+                className="Reje-input "
+                ref={usernamedom}
+                type="text"
+                placeholder="username"
+              />
+            </div>
+            <div className="first-last">
+              <div>
+                <input ref={firstnamedom} type="text" placeholder="Firstname" />
+              </div>
+              <div>
+                <input ref={lastnamedom} type="text" placeholder="Lastname" />
+              </div>
+            </div>
 
-      <div>
-        <button type="submit">Rejstore</button>
-      </div>
+            <div>
+              <input
+                className="Reje-input"
+                ref={emailsdom}
+                type="text"
+                placeholder="email"
+              />
+            </div>
+            <div>
+              <input
+                className="Reje-input"
+                ref={passworddom}
+                type="text"
+                placeholder="password"
+              />
+            </div>
+          </form>
 
-      <Link to="/login">Login</Link>
-    </form>
+          <div>
+            <button type="submit">Rejstore</button>
+          </div>
+          <Link to="/login">
+            <div className="have-accc">
+              <p className="sign">Already have the account</p>
+            </div>
+          </Link>
+        </div>
+        <div className="forms22">
+          <div className="form2-1">
+            <p className="p1">home</p>
+            <h1>Teshager Networks Q&A</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Doloremque dicta dolorum cupiditate hic nisi rem voluptate
+              pariatur deserunt ea neque ab? Nam, accusamus
+            </p>
+            <p>
+              laborum illo necessitatibus. Quidem porro minus ipsa repudiandae
+              incidunt quam facilis doloremque culpa, facilis magni nam,
+              quibusdam
+            </p>
+            <p>
+              error nisi iure, cum quisquam. Rerum, ipsa dolores nesciunt nam
+              ducimus reiciendis iure sunt, non, porro! Error qui tenetur
+              exercitationem,
+            </p>
+            <button>How it works</button>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

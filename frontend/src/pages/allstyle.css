@@ -149,10 +149,161 @@
   overflow-y: scroll;
   overflow-x: hidden;
   margin: 15px;
-
   border-radius: 8px;
-
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
   background-color: #f9f6f9;
+}
+/* login page */
+.login-wrape {
+  height: 98vh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #f8f8f8;
+}
+.login-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 100%;
+  width: 980px;
+  margin: 0 auto;
+}
+.login-container .forms {
+  display: flex;
+  align-items: center;
+  height: 400px;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+}
+.forms h5 {
+  margin-top: 80px;
+}
+.forms .accoutnt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  font-size: 15px;
+  margin: 5px 0;
+}
+.accoutnt .Lnk {
+  color: red;
+}
+.login-container .forms .login {
+  width: 300px;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+  outline: none;
+}
+
+.login-container .forms .acount {
+  text-align: center;
+  margin-left: 40px;
+  font-size: 17px;
+  margin-top: 10px;
+}
+.acount .Link-acc {
+  color: red;
+}
+
+.login-container .forms button {
+  text-align: center;
+  margin-left: 100px;
+  padding: 5px 50px;
+  background-color: orange;
+}
+
+.login-container .forms2 {
+  width: 850px;
+  height: 400px;
+}
+.login-container .forms2 .form2-1 {
+  margin-top: 50px;
+  font-size: 15px;
+}
+.forms2 .form2-1 p {
+  padding: 6px 0;
+}
+.form2-1 .p1 {
+  color: red;
+}
+.form2-1 button {
+  margin-top: 10px;
+  padding: 5px 50px;
+  background-color: orange;
+}
+/*  rejstor */
+.rejstor-wrape {
+  height: 98vh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #f8f8f8;
+}
+.rejstor-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 100%;
+  width: 980px;
+  margin: 0 auto;
+}
+
+.rejstor-container .forms21 {
+  display: flex;
+  align-items: center;
+  height: 400px;
+  /* width: 850px; */
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  margin: 30px;
+}
+.first-last {
+  display: flex;
+  gap: 5px;
+}
+.forms-of-container {
+  text-align: center;
+}
+.Reje-input {
+  width: 300px;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+  outline: none;
+}
+.first-last input {
+  width: 130px;
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+}
+.forms21 h5 {
+  margin-top: 25px;
+}
+.have-acc {
+  display: flex;
+  font-size: 17px;
+  gap: 6px;
+}
+.have-acc .sign {
+  color: red;
+}
+.have-accc .sign {
+  color: red;
+  font-size: 17px;
+}
+.forms21 button {
+  margin-top: 10px;
+  padding: 8px 50px;
+  background-color: lightblue;
+  width: 290px;
+}
+.forms22 {
+  font-size: 25px;
 }
